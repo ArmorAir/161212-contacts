@@ -45,7 +45,7 @@ public class ContentB_StateAA extends StateAA
 		
 		
 		
-		ctMo = this.getMorph().createMorph(new ContentTab_StateAA);
+		ctMo = this.getMorph().createMorph(new ContentTab_StateAA(true));
 		_tabNode = ctMo.getNode();
 		this.getFusion().addNode(_tabNode);
 		//_tabNode.y = -ViewConfig.TAB_H2;
@@ -120,7 +120,7 @@ public class ContentB_StateAA extends StateAA
 	
 	private function ____onDragging(e:AEvent):void{
 		if(!_isDialing) {
-			this.____xxCheckTabPanel(_dragFN.getDestY());
+			this.____xxCheckTabPanel(_dragFN.y);
 		}
 	}
 	

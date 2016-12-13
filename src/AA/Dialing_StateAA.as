@@ -74,6 +74,7 @@ public class Dialing_StateAA extends StateAA
 		
 		this.registerNotification(NotificationConfig.SHOW_DIALING);
 		this.registerNotification(NotificationConfig.CLOSE_DIALING);
+		this.registerNotification(NotificationConfig.REVERSE);
 		
 	}
 	
@@ -83,6 +84,9 @@ public class Dialing_StateAA extends StateAA
 		}
 		else if(v.getName() == NotificationConfig.SHOW_DIALING) {
 			this.____xxSwitchPancel(true);
+		}
+		else if(v.getName() == NotificationConfig.REVERSE) {
+			this.____xxSwitchPancel(false);
 		}
 	}
 	

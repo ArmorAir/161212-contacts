@@ -5,6 +5,7 @@ package AA {
 	import AA.comps.ContentTab_StateAA;
 	
 	import Lv_0.events.AEvent;
+	import Lv_0.events.ANotification;
 	
 	import Lv_1.Axime;
 	import Lv_1.window.Touch;
@@ -15,6 +16,7 @@ package AA {
 	import Lv_2.display.StateAA;
 	
 	import Lv_3.display.advanced.DragFusionAA;
+	import Lv_3.tween.ATween;
 	
 	import utils.NotificationConfig;
 	import utils.ViewConfig;
@@ -41,15 +43,18 @@ public class ContentA_StateAA extends StateAA {
 		
 		
 		
-		ctMo = this.getMorph().createMorph(new ContentTab_StateAA);
+		ctMo = this.getMorph().createMorph(new ContentTab_StateAA(false));
 		ctNode = ctMo.getNode();
 		_dragFN.addNode(ctNode);
 		
 		
 		_dragFN.eventPress().addListener(____onDrag);
 		_dragFN.eventStartDrag().addListener(____onCloseDialing);
-		_dragFN.eventRelease().addListener(____onCloseDialing);
+//		_dragFN.eventRelease().addListener(____onCloseDialing);
+		
+		
 	}
+	
 	
 	
 	

@@ -16,6 +16,10 @@ package AA.comps
 public class ContentTab_StateAA extends StateAA
 {
 	
+	public function ContentTab_StateAA(isReverse:Boolean ) {
+		x_isReverse = isReverse;
+	}
+	
 	
 	override public function onEnter():void {
 		var img_A:ImageAA;
@@ -37,23 +41,30 @@ public class ContentTab_StateAA extends StateAA
 		img_A.pivotY = img_A.getSourceHeight() / 2;
 		img_A.y = 310;
 		
-//		img_A = new ImageAA;
-//		img_A.textureId = "img/sort.png";
-//		this.getFusion().addNode(img_A);
-//		img_A.x = 880;
-//		img_A.pivotY = img_A.getSourceHeight() / 2;
-//		img_A.y = 310;
-//		img_A.eventClick().addListener(function(e:AEvent):void{
+		img_A = new ImageAA;
+		img_A.textureId = x_isReverse ? "img/sort_B.png" : "img/sort_A.png";
+		this.getFusion().addNode(img_A);
+		img_A.x = 880;
+		img_A.pivotY = img_A.getSourceHeight() / 2;
+		img_A.y = 310;
+		img_A.eventClick().addListener(function(e:AEvent):void{
+			
+			Axime.sendNotification(NotificationConfig.REVERSE);
+			
+		});
+		
+		
+//		check_A = new RawCheckAA("img/sort_A.png", "img/sort_B.png", false, true);
+//		check_A.x = 880;
+//		check_A.pivotY = check_A.getImage().getSourceHeight() / 2;
+//		check_A.y = 310;
+//		this.getFusion().addNode(check_A);
+//		
+//		check_A.getSelected().eventChange().addListener(function(e:AEvent):void{
 //			
 //			Axime.sendNotification(NotificationConfig.REVERSE);
 //			
 //		});
-		
-		check_A = new RawCheckAA("img/sort_A.png", "img/sort_B.png", false, true);
-		check_A.x = 880;
-		check_A.pivotY = check_A.getImage().getSourceHeight() / 2;
-		check_A.y = 310;
-		this.getFusion().addNode(check_A);
 	}
 	
 	override public function onExit():void {
@@ -62,6 +73,7 @@ public class ContentTab_StateAA extends StateAA
 	
 	
 	
+	private var x_isReverse:Boolean;
 	
 	
 	
