@@ -31,6 +31,8 @@ public class Res_StateAA extends StateAA {
 				"img/bg_A.png",
 				"img/s9white.png",
 				"img/sort.png", 
+				"img/sort_A.png", 
+				"img/sort_B.png", 
 				"img/content_A.png"
 			];
 		am.addBundle(new FilesBundle(AY),   new TextureAA_BundleHandler(this.getContext(), 1.0, false));

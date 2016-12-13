@@ -8,6 +8,7 @@ package AA.comps
 	import Lv_2.display.StateAA;
 	
 	import Lv_3.display.Scale9ImageAA;
+	import Lv_3.display.advanced.RawCheckAA;
 	
 	import utils.NotificationConfig;
 	import utils.ViewConfig;
@@ -19,7 +20,7 @@ public class ContentTab_StateAA extends StateAA
 	override public function onEnter():void {
 		var img_A:ImageAA;
 		var s9img_A:Scale9ImageAA;
-		
+		var check_A:RawCheckAA;
 		
 		s9img_A = new Scale9ImageAA;
 		s9img_A.textureId = "img/s9white.png";
@@ -36,18 +37,23 @@ public class ContentTab_StateAA extends StateAA
 		img_A.pivotY = img_A.getSourceHeight() / 2;
 		img_A.y = 310;
 		
-		img_A = new ImageAA;
-		img_A.textureId = "img/sort.png";
-		this.getFusion().addNode(img_A);
-		img_A.x = 880;
-		img_A.pivotY = img_A.getSourceHeight() / 2;
-		img_A.y = 310;
-		img_A.eventClick().addListener(function(e:AEvent):void{
-			
-			Axime.sendNotification(NotificationConfig.REVERSE);
-			
-		});
+//		img_A = new ImageAA;
+//		img_A.textureId = "img/sort.png";
+//		this.getFusion().addNode(img_A);
+//		img_A.x = 880;
+//		img_A.pivotY = img_A.getSourceHeight() / 2;
+//		img_A.y = 310;
+//		img_A.eventClick().addListener(function(e:AEvent):void{
+//			
+//			Axime.sendNotification(NotificationConfig.REVERSE);
+//			
+//		});
 		
+		check_A = new RawCheckAA("img/sort_A.png", "img/sort_B.png", false, true);
+		check_A.x = 880;
+		check_A.pivotY = check_A.getImage().getSourceHeight() / 2;
+		check_A.y = 310;
+		this.getFusion().addNode(check_A);
 	}
 	
 	override public function onExit():void {

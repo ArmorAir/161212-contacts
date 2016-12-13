@@ -120,12 +120,12 @@ public class ContentB_StateAA extends StateAA
 	
 	private function ____onDragging(e:AEvent):void{
 		if(!_isDialing) {
-			this.____xxCheckTabPanel(_dragFN.y);
+			this.____xxCheckTabPanel(_dragFN.getDestY());
 		}
 	}
 	
 	private function ____xxCheckTabPanel(dragY:Number) : void {
-		if(dragY <= -ViewConfig.LIST_SCROLL_A - LIST_OFFSET_A + 15){
+		if(dragY <= -ViewConfig.LIST_SCROLL_A - LIST_OFFSET_A + 35){
 			this.____xxShowTab(true);
 		}
 		else {
