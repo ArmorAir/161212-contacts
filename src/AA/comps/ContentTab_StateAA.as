@@ -1,9 +1,13 @@
 package AA.comps
 {
+	import AA.ContentB_StateAA;
+	
 	import Lv_0.events.AEvent;
+	import Lv_0.events.ANotification;
 	
 	import Lv_1.Axime;
 	
+	import Lv_2.display.FusionAA;
 	import Lv_2.display.ImageAA;
 	import Lv_2.display.StateAA;
 	
@@ -48,11 +52,40 @@ public class ContentTab_StateAA extends StateAA
 		img_A.pivotY = img_A.getSourceHeight() / 2;
 		img_A.y = 310;
 		img_A.eventClick().addListener(function(e:AEvent):void{
+			x_itemFN.visible = !x_itemFN.visible;
+			x_itemFN.touchable = !x_itemFN.touchable;
+//			Axime.sendNotification(NotificationConfig.REVERSE);
 			
-			Axime.sendNotification(NotificationConfig.REVERSE);
 			
+			Axime.sendNotification(NotificationConfig.ITEM_SELECT, x_itemFN.visible);
 		});
 		
+		
+		
+		x_itemFN = new FusionAA;
+		this.getFusion().addNode(x_itemFN);
+		x_itemFN.touchable = false;
+		x_itemFN.visible = false;
+		x_itemFN.y = ViewConfig.TAB_H ;
+		
+		
+		img_A = new ImageAA;
+		img_A.textureId = "img/mask.png";
+		x_itemFN.addNode(img_A);
+		img_A = new ImageAA;
+		img_A.textureId = "img/item_1.png";
+		x_itemFN.addNode(img_A);
+		img_A.eventClick().addListener(function(e:AEvent):void{
+			Axime.sendNotification(NotificationConfig.REVERSE, false);
+		});
+		
+		img_A = new ImageAA;
+		img_A.textureId = "img/item_2.png";
+		x_itemFN.addNode(img_A);
+		img_A.y = img_A.getSourceHeight();
+		img_A.eventClick().addListener(function(e:AEvent):void{
+			Axime.sendNotification(NotificationConfig.REVERSE, true);
+		});
 		
 //		check_A = new RawCheckAA("img/sort_A.png", "img/sort_B.png", false, true);
 //		check_A.x = 880;
@@ -65,6 +98,8 @@ public class ContentTab_StateAA extends StateAA
 //			Axime.sendNotification(NotificationConfig.REVERSE);
 //			
 //		});
+		
+		
 	}
 	
 	override public function onExit():void {
@@ -73,8 +108,10 @@ public class ContentTab_StateAA extends StateAA
 	
 	
 	
-	private var x_isReverse:Boolean;
 	
+	
+	private var x_isReverse:Boolean;
+	private var x_itemFN:FusionAA;
 	
 	
 }

@@ -49,10 +49,17 @@ public class ContentA_StateAA extends StateAA {
 		
 		
 		_dragFN.eventPress().addListener(____onDrag);
-		_dragFN.eventStartDrag().addListener(____onCloseDialing);
+		_dragFN.eventStartDrag().addListener(____onStartDrag);
 //		_dragFN.eventRelease().addListener(____onCloseDialing);
 		
 		
+		this.registerNotification(NotificationConfig.ITEM_SELECT);
+	}
+	
+	override public function onNotification(v:ANotification):void {
+		if(v.getName() == NotificationConfig.ITEM_SELECT) {
+			_isItemSelect = v.getData() as Boolean;
+		}
 	}
 	
 	
@@ -60,18 +67,22 @@ public class ContentA_StateAA extends StateAA {
 	
 	private var _dragFN:DragFusionAA;
 	private var _clState:ContentList_StateAA;
+	private var _isItemSelect:Boolean;
 	
 	
 	
 	private function ____onDrag(e:AEvent):void{
 		var touch:Touch;
 		
+		if(_isItemSelect) {
+			return;
+		}
 		touch = _dragFN.eventPress().getTouch();
 		
 		_dragFN.startDrag(touch, new Rectangle(0, -ViewConfig.LIST_SCROLL_A,0, ViewConfig.LIST_SCROLL_A));
 	}
 	
-	private function ____onCloseDialing(e:AEvent):void {
+	private function ____onStartDrag(e:AEvent):void {
 		
 		Axime.sendNotification(NotificationConfig.CLOSE_DIALING);
 		

@@ -12,5 +12,8 @@ public class NotificationConfig
 	
 	public static const REVERSE:String = "reverse";
 	
+	
+	public static const ITEM_SELECT:String = "itemSelect";
+	
 }
 }

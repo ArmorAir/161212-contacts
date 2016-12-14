@@ -44,7 +44,7 @@ public class Main_StateAA extends StateAA
 	
 	override public function onNotification(v:ANotification):void {
 		if(v.getName() == NotificationConfig.REVERSE) {
-			_isReverse = !_isReverse;
+			_isReverse = v.getData() as Boolean;
 			if(_isReverse) {
 				_contentMo.switchTo(new ContentB_StateAA);
 			}
