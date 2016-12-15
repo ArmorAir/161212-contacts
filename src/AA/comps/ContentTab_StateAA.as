@@ -24,6 +24,9 @@ public class ContentTab_StateAA extends StateAA
 		x_isReverse = isReverse;
 	}
 	
+	public function isItemSelectStatus():Boolean {
+		return x_itemFN.visible;
+	}
 	
 	override public function onEnter():void {
 		var img_A:ImageAA;
@@ -57,7 +60,7 @@ public class ContentTab_StateAA extends StateAA
 //			Axime.sendNotification(NotificationConfig.REVERSE);
 			
 			
-			Axime.sendNotification(NotificationConfig.ITEM_SELECT, x_itemFN.visible);
+			Axime.sendNotification(NotificationConfig.ITEM_SELECT);
 		});
 		
 		
@@ -72,15 +75,24 @@ public class ContentTab_StateAA extends StateAA
 		img_A = new ImageAA;
 		img_A.textureId = "img/mask.png";
 		x_itemFN.addNode(img_A);
+		img_A.eventClick().addListener(function(e:AEvent):void{
+//			Axime.sendNotification(NotificationConfig.CLOSE_DIALING);
+			
+			x_itemFN.visible = !x_itemFN.visible;
+			x_itemFN.touchable = !x_itemFN.touchable;
+		});
+		
+		
+		
 		img_A = new ImageAA;
-		img_A.textureId = "img/item_1.png";
+		img_A.textureId = x_isReverse ? "img/itemA_1.png" : "img/itemA_2.png";
 		x_itemFN.addNode(img_A);
 		img_A.eventClick().addListener(function(e:AEvent):void{
 			Axime.sendNotification(NotificationConfig.REVERSE, false);
 		});
 		
 		img_A = new ImageAA;
-		img_A.textureId = "img/item_2.png";
+		img_A.textureId = x_isReverse ? "img/itemB_2.png" : "img/itemB_1.png";
 		x_itemFN.addNode(img_A);
 		img_A.y = img_A.getSourceHeight();
 		img_A.eventClick().addListener(function(e:AEvent):void{
@@ -99,7 +111,7 @@ public class ContentTab_StateAA extends StateAA
 //			
 //		});
 		
-		
+		this.registerNotification(NotificationConfig.SHOW_DIALING);
 	}
 	
 	override public function onExit():void {
@@ -107,6 +119,17 @@ public class ContentTab_StateAA extends StateAA
 	}
 	
 	
+	override public function onNotification(v:ANotification):void {
+		
+		if(v.getName() == NotificationConfig.SHOW_DIALING) {
+			if(x_itemFN.visible) {
+				x_itemFN.visible = false;
+				x_itemFN.touchable = false;
+			}
+			
+			
+		}
+	}
 	
 	
 	

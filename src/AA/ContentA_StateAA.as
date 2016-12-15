@@ -42,8 +42,8 @@ public class ContentA_StateAA extends StateAA {
 		ctNode.y = ViewConfig.TAB_H;
 		
 		
-		
-		ctMo = this.getMorph().createMorph(new ContentTab_StateAA(false));
+		_ctState = new ContentTab_StateAA(false);
+		ctMo = this.getMorph().createMorph(_ctState);
 		ctNode = ctMo.getNode();
 		_dragFN.addNode(ctNode);
 		
@@ -53,19 +53,20 @@ public class ContentA_StateAA extends StateAA {
 //		_dragFN.eventRelease().addListener(____onCloseDialing);
 		
 		
-		this.registerNotification(NotificationConfig.ITEM_SELECT);
+//		this.registerNotification(NotificationConfig.ITEM_SELECT);
 	}
 	
 	override public function onNotification(v:ANotification):void {
-		if(v.getName() == NotificationConfig.ITEM_SELECT) {
-			_isItemSelect = v.getData() as Boolean;
-		}
+//		if(v.getName() == NotificationConfig.ITEM_SELECT) {
+//			_isItemSelect = v.getData() as Boolean;
+//		}
 	}
 	
 	
 	
 	
 	private var _dragFN:DragFusionAA;
+	private var _ctState:ContentTab_StateAA;
 	private var _clState:ContentList_StateAA;
 	private var _isItemSelect:Boolean;
 	
@@ -74,7 +75,7 @@ public class ContentA_StateAA extends StateAA {
 	private function ____onDrag(e:AEvent):void{
 		var touch:Touch;
 		
-		if(_isItemSelect) {
+		if(_ctState.isItemSelectStatus()) {
 			return;
 		}
 		touch = _dragFN.eventPress().getTouch();

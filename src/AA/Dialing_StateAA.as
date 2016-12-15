@@ -75,7 +75,7 @@ public class Dialing_StateAA extends StateAA
 		this.registerNotification(NotificationConfig.SHOW_DIALING);
 		this.registerNotification(NotificationConfig.CLOSE_DIALING);
 		this.registerNotification(NotificationConfig.REVERSE);
-		
+		this.registerNotification(NotificationConfig.ITEM_SELECT);
 	}
 	
 	override public function onNotification(v:ANotification):void {
@@ -86,6 +86,9 @@ public class Dialing_StateAA extends StateAA
 			this.____xxSwitchPancel(true);
 		}
 		else if(v.getName() == NotificationConfig.REVERSE) {
+			this.____xxSwitchPancel(false);
+		}
+		else if(v.getName() == NotificationConfig.ITEM_SELECT) {
 			this.____xxSwitchPancel(false);
 		}
 	}

@@ -1,7 +1,6 @@
 package launch {
 	import flash.ui.Keyboard;
 	
-	import AA.ContentA_StateAA;
 	import AA.Main_StateAA;
 	import AA.Res_StateAA;
 	
@@ -13,11 +12,9 @@ package launch {
 	import Lv_1.resource.AssetMachine;
 	import Lv_1.window.AWindow;
 	
-	import Lv_2.display.AAFacade;
 	import Lv_2.display.ContextAA;
 	import Lv_2.resource.converters.AtfAssetConvert;
 	import Lv_2.resource.converters.AtlasAssetConvert;
-	import Lv_2.utils.Stats;
 	
 	import Lv_3.resource.converters.SwfClassAssetConverter;
 	
