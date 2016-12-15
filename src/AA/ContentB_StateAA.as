@@ -100,7 +100,7 @@ public class ContentB_StateAA extends StateAA
 	private var _isDialing:Boolean;
 	
 	private var _tabNode:NodeAA;
-	private var _isTabEnabled:Boolean;
+	private var _isTabEnabled:Boolean = true;
 	
 	
 	
