@@ -48,6 +48,7 @@ public class ContentB_StateAA extends StateAA
 		ctMo = this.getMorph().createMorph(new ContentTab_StateAA(true));
 		_tabNode = ctMo.getNode();
 		this.getFusion().addNode(_tabNode);
+//		_dragFN.addNode(_tabNode);
 		//_tabNode.y = -ViewConfig.TAB_H2;
 		
 		
